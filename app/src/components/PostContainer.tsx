@@ -1,10 +1,18 @@
 import { FunctionComponent } from "react";
 import { PostDetail } from "./PostDetail"
+import { AllPosts } from "./AllPosts";
 
 
 export const PostContainer: FunctionComponent = () => {
     console.log('run post container')
     return (
-        <PostDetail />
+        <div className="columns">
+            <div className="column">
+                <AllPosts />
+            </div>
+            <div className="column">
+                <PostDetail />
+            </div>
+        </div>
     )
 }

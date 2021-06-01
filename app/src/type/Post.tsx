@@ -4,8 +4,14 @@ export interface IPost {
     body: string
 }
 
-export interface IPosts {
-    getPosts: IPost[]
+export interface IAllPosts {
+    data: {
+        id: number,
+        title: string
+    },
+    meta: {
+        totalCount: number
+    }
 }
 
 export interface IPostMutation {

@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { PostContainer } from "./components/PostContainer"
+
 function App() {
   return (
     <>
@@ -24,12 +26,11 @@ function App() {
                 <div className="box">
                   <Switch>
                     <Route path="/Post">
-                      <></>
+                      <PostContainer />
                     </Route>
                   </Switch>
                 </div>
               </div>
-
             </Router>
           </div>
         </div>

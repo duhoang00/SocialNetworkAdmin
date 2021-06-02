@@ -27,3 +27,15 @@ query (
   }
 }
 `
+
+export const ADD_POST = gql`
+  mutation (
+    $input: CreatePostInput!
+  ) {
+    createPost(input: $input) {
+      id
+      title
+      body
+    }
+  }
+`

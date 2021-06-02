@@ -7,11 +7,8 @@ export const PostContainer: FunctionComponent = () => {
     const [postDetailID, setPostDetailID] = useState(1)
 
     const showPostDetail = (id: number) => {
-        // console.log('get post detail ID = ' + id)
         setPostDetailID(id)
     }
-
-    // console.log("container = " + postDetailID)
 
     return (
         <div className="columns">

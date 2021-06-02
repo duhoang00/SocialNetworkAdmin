@@ -1,17 +1,20 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import { PostDetail } from "./PostDetail"
 import { AllPosts } from "./AllPosts";
 
-type PostContainerProps = {
-    postDetailID: number
-}
+// type PostContainerProps = {
+//     postDetailID: number
+// }
 
-export const PostContainer: FunctionComponent<PostContainerProps> = ({
-    postDetailID
+export const PostContainer: FunctionComponent = ({
+    // postDetailID
 }) => {
 
+    const [postDetailID, setPostDetailID] = useState(1)
+
     const showPostDetail = (id: number) => {
-        postDetailID = id;
+        console.log('get post detail ID = ' + id)
+        setPostDetailID(id)
     }
 
     console.log("container = " + postDetailID)
@@ -19,9 +22,11 @@ export const PostContainer: FunctionComponent<PostContainerProps> = ({
     return (
         <div className="columns">
             <div className="column">
+                <h1 className="title is-3">All lists</h1>
                 <AllPosts showPostDetail={showPostDetail} />
             </div>
-            <div className="column is-2">
+            <div className="column is-4">
+                <h1 className="title">List detail</h1>
                 <PostDetail id={postDetailID} />
             </div>
         </div>

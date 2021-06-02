@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const GET_POST_DETAIL = gql`
 query (
-  $id: id
+  $id: ID!
 ) {
     post(id: $id) {
       id

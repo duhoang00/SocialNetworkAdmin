@@ -7,7 +7,7 @@ function App() {
     <>
       <div className="section">
         <div className="container">
-          <h1 className="title has-text-centered">Social Network Admin</h1>
+          <h1 className="title is-1 has-text-centered">Social Network Admin</h1>
           <div className="columns">
             <Router>
               <div className="column is-2">
@@ -26,7 +26,7 @@ function App() {
                 <div className="box">
                   <Switch>
                     <Route path="/Post">
-                      <PostContainer postDetailID={26}/>
+                      <PostContainer/>
                     </Route>
                   </Switch>
                 </div>

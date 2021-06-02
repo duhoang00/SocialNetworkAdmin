@@ -7,6 +7,6 @@ export function usePostDetailQuery(gqlQuery: DocumentNode) {
 }
 
 export function useAllPostsQuery(gqlQuery: DocumentNode) {
-  const { loading, error, data } = useQuery<{allPosts: IAllPosts}>(gqlQuery);
+  const { loading, error, data } = useQuery(gqlQuery);
   return { loading, error, data };
 }

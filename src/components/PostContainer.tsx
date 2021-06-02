@@ -10,7 +10,7 @@ export const PostContainer: FunctionComponent = () => {
             <div className="column">
                 <AllPosts />
             </div>
-            <div className="column">
+            <div className="column is-2">
                 <PostDetail />
             </div>
         </div>

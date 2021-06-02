@@ -7,11 +7,14 @@ type PostDetailProps = {
 }
 
 export const PostDetail: FunctionComponent<PostDetailProps> = ({ id }) => {
-    console.log("detail = " + id)
+    // console.log("detail = " + id)
     const { loading, error, data } = usePostDetailQuery(GET_POST_DETAIL, id);
 
     if (loading) return <h1>Loading post detail...</h1>;
     if (error) return <h1>Something went wrong!</h1>;
+
+    console.log('post detail data')
+    console.log(data)
 
     return (
         <>
@@ -19,7 +22,7 @@ export const PostDetail: FunctionComponent<PostDetailProps> = ({ id }) => {
                 <div className="field">
                     <label className="label">ID</label>
                     <div className="control">
-                        <input className="input" type="text" defaultValue={data?.post.id} />
+                        <input className="input" key={data?.post.id} type="text" defaultValue={data?.post.id} />
                     </div>
                 </div>
                 <div className="field">

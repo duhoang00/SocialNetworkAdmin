@@ -2,22 +2,16 @@ import { FunctionComponent, useState } from "react";
 import { PostDetail } from "./PostDetail"
 import { AllPosts } from "./AllPosts";
 
-// type PostContainerProps = {
-//     postDetailID: number
-// }
-
-export const PostContainer: FunctionComponent = ({
-    // postDetailID
-}) => {
+export const PostContainer: FunctionComponent = () => {
 
     const [postDetailID, setPostDetailID] = useState(1)
 
     const showPostDetail = (id: number) => {
-        console.log('get post detail ID = ' + id)
+        // console.log('get post detail ID = ' + id)
         setPostDetailID(id)
     }
 
-    console.log("container = " + postDetailID)
+    // console.log("container = " + postDetailID)
 
     return (
         <div className="columns">

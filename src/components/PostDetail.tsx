@@ -18,11 +18,11 @@ export const PostDetail: FunctionComponent<PostDetailProps> = ({ id }) => {
 
     return (
         <>
-            <div className="field">
+            <div className="field" key={data?.post.id} >
                 <div className="field">
                     <label className="label">ID</label>
                     <div className="control">
-                        <input className="input" key={data?.post.id} type="text" defaultValue={data?.post.id} />
+                        <input className="input" type="text" defaultValue={data?.post.id} />
                     </div>
                 </div>
                 <div className="field">

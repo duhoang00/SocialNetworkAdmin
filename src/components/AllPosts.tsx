@@ -2,18 +2,19 @@ import { FunctionComponent } from "react";
 import { GET_ALL_POSTS } from "../query/PostQuery"
 import { useAllPostsQuery } from "../request/PostRequest"
 
-export const AllPosts: FunctionComponent = () => {
+type ALlPostsProps = {
+    showPostDetail: (id: number) => void
+}
+
+export const AllPosts: FunctionComponent<ALlPostsProps> = ({
+    showPostDetail
+}) => {
     const { loading, error, data } = useAllPostsQuery(GET_ALL_POSTS);
 
     if (loading) return <h1>Loading all posts...</h1>;
     if (error) return <h1>Something went wrong!</h1>;
 
     const allPostData = data.posts.data;
-
-    const showPostDetail = (id: number) => {
-        console.log(id)
-        return ""
-    }
 
     return (
         <>

@@ -1,8 +1,9 @@
 import { DocumentNode, useQuery } from "@apollo/client"
-import { IPost, IAllPosts } from "../type/Post"
+import { IPost } from "../type/Post"
 
-export function usePostDetailQuery(gqlQuery: DocumentNode) {
-  const { loading, error, data } = useQuery<{post: IPost}>(gqlQuery);
+export function usePostDetailQuery(gqlQuery: DocumentNode, id: number) {
+  console.log("request = " + id)
+  const { loading, error, data } = useQuery<{post: IPost}>(gqlQuery, {variables: {id}});
   return { loading, error, data };
 }
 

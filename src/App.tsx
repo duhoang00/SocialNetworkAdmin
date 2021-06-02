@@ -26,7 +26,7 @@ function App() {
                 <div className="box">
                   <Switch>
                     <Route path="/Post">
-                      <PostContainer />
+                      <PostContainer postDetailID={26}/>
                     </Route>
                   </Switch>
                 </div>

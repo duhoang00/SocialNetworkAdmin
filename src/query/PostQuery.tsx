@@ -1,7 +1,9 @@
 import { gql } from '@apollo/client';
 
 export const GET_POST_DETAIL = gql`
-query {
+query (
+  $id: id
+) {
     post(id: $id) {
       id
       title

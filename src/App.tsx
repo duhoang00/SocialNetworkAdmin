@@ -14,9 +14,12 @@ function App() {
                 <div className="box">
                   <aside className="menu">
                     <p className="menu-label">Post</p>
-                    <ul>
+                    <ul className="menu-list">
                       <li>
                         <Link to="/Post">Check post</Link>
+                      </li>
+                      <li>
+                        <Link to="/AddPost">Add post</Link>
                       </li>
                     </ul>
                   </aside>
@@ -27,6 +30,9 @@ function App() {
                   <Switch>
                     <Route path="/Post">
                       <PostContainer/>
+                    </Route>
+                    <Route path="/AddPost">
+                      <> Add post </>
                     </Route>
                   </Switch>
                 </div>

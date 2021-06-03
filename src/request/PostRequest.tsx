@@ -10,8 +10,3 @@ export function useAllPostsQuery(gqlQuery: DocumentNode) {
   const { loading, error, data } = useQuery(gqlQuery);
   return { loading, error, data };
 }
-
-export function usePostDeleteQuery(gqlQuery: DocumentNode, id: number) {
-  const { loading, error, data } = useQuery<{ deletePost: boolean }>(gqlQuery, { variables: { id } });
-  return { loading, error, data };
-}

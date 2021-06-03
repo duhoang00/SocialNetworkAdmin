@@ -1,8 +1,8 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import { GET_POST_DETAIL } from "../fetching/PostQuery"
-import { usePostDetailQuery, usePostDeleteQuery } from "../request/PostRequest"
+import { usePostDetailQuery } from "../request/PostRequest"
 import { useMutation } from "@apollo/client"
-import { DELETE_POST } from "../fetching/PostMutation";
+import { DELETE_POST, UPDATE_POST } from "../fetching/PostMutation";
 
 type PostDetailProps = {
     id: number
@@ -10,7 +10,12 @@ type PostDetailProps = {
 
 export const PostDetail: FunctionComponent<PostDetailProps> = ({ id }) => {
     const [deletePost, deleteStatus ] = useMutation(DELETE_POST)
+
+    const [updatePost, updateStatus ] = useMutation(UPDATE_POST)
+
     const { loading, error, data } = usePostDetailQuery(GET_POST_DETAIL, id);
+    const [bodyContent, setBodyContent] = useState(data?.post.body)
+
     if (loading) return <h1>Loading post detail...</h1>;
     if (error) return <h1>Something went wrong!</h1>;
 
@@ -32,18 +37,30 @@ export const PostDetail: FunctionComponent<PostDetailProps> = ({ id }) => {
                 <div className="field">
                     <label className="label">Body</label>
                     <div className="control">
-                        <textarea className="textarea" placeholder="Textarea" defaultValue={data?.post.body} rows={10} ></textarea>
+                        <textarea className="textarea" placeholder="Textarea" defaultValue={data?.post.body} rows={10} onChange={(e) => {
+                            e.preventDefault();
+                            setBodyContent(e.target.value)
+                        }}></textarea>
                     </div>
                 </div>
             </div>
             <div className="field is-grouped is-grouped-multiline">
                 <div className="control">
-                    <button className="button is-info">Update</button>
+                    <button className="button is-info" onClick={(e) => {
+                        e.preventDefault();
+                        updatePost({
+                            variables: {
+                                "id": data?.post.id,
+                                "input": {
+                                    "body": bodyContent
+                                }
+                            }
+                        })
+                    }}>Update</button>
                 </div>
                 <div className="control">
                     <button className="button is-danger" onClick={(e) => {
                         e.preventDefault()
-                        
                         deletePost({
                             variables: {"id": data?.post.id}
                         })

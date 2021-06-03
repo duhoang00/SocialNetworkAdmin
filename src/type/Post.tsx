@@ -8,3 +8,7 @@ export interface CreatePostInput {
     title: string,
     body: string
 }
+
+// export interface UpdatePostInput {
+//     body: string
+// }

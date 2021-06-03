@@ -19,3 +19,15 @@ mutation (
   deletePost(id: $id)
 }
 `
+
+export const UPDATE_POST = gql`
+mutation (
+  $id: ID!,
+  $input: UpdatePostInput!
+) {
+  updatePost(id: $id, input: $input) {
+    id
+    body
+  }
+}
+`

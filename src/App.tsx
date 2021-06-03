@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { PostContainer } from "./components/PostContainer"
+import { UserContainer } from "./components/UserContainer"
 import { CreatePostForm } from "./components/CreatePost"
 
 function App() {
@@ -24,6 +25,13 @@ function App() {
                         <Link to="/CreatePost">Create post</Link>
                       </li>
                     </ul>
+
+                    <p className="menu-label">User</p>
+                    <ul className="menu-list">
+                      <li>
+                        <Link to="/User">Check user</Link>
+                      </li>
+                    </ul>
                   </aside>
                 </div>
               </div>
@@ -35,6 +43,9 @@ function App() {
                     </Route>
                     <Route path="/CreatePost">
                       <CreatePostForm />
+                    </Route>
+                    <Route path="/User">
+                      <UserContainer />
                     </Route>
                   </Switch>
                 </div>

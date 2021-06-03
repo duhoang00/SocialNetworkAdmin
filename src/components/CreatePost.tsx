@@ -15,8 +15,10 @@ export const CreatePostForm: FunctionComponent = () => {
                         <label className="label">Title</label>
                         <textarea className="textarea" onChange={(e) => {
                             setInput(input => ({
-                                title: e.target.value,
-                                body: input?.body!
+                                input: {
+                                    title: e.target.value,
+                                    body: input?.input.body!
+                                }
                             }))
                         }}></textarea>
                     </div>
@@ -25,8 +27,10 @@ export const CreatePostForm: FunctionComponent = () => {
                         <label className="label">Body</label>
                         <textarea className="textarea" onChange={(e) => {
                             setInput(newPost => ({
-                                title: input?.title!,
-                                body: e.target.value
+                                input: {
+                                    title: input?.input.title!,
+                                    body: e.target.value
+                                }
                             }))
                         }}></textarea>
                     </div>
@@ -37,9 +41,7 @@ export const CreatePostForm: FunctionComponent = () => {
                                 e.preventDefault()
                                 console.log(input)
                                 createPost({
-                                    variables: {
-                                        "input": input
-                                    }
+                                    variables: input
                                 })
                                 console.log(data)
                             }}>

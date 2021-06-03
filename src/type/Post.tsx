@@ -4,11 +4,25 @@ export interface IPost {
     body: string
 }
 
-export interface CreatePostInput {
-    title: string,
-    body: string
+export interface PageQueryOptions {
+    options: {
+        paginate: {
+            page: number,
+            limit: number
+        }
+    }
 }
 
-// export interface UpdatePostInput {
-//     body: string
-// }
+export interface CreatePostInput {
+    input: {
+        title: string,
+        body: string
+    }
+}
+
+export interface UpdatePostInput {
+    id: number,
+    input: {
+        body: string
+    }
+}

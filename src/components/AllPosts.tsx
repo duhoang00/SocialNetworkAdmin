@@ -1,16 +1,28 @@
 import { FunctionComponent } from "react";
 import { GET_ALL_POSTS } from "../fetching/PostQuery"
 import { useAllPostsQuery } from "../request/PostRequest"
+import { PageQueryOptions } from "../type/Post"
 
 type ALlPostsProps = {
     showPostDetail: (id: number) => void
 }
 
+const pageQueryOptions = (page: number, limit: number) => {
+    const optionsReturn: PageQueryOptions = {
+        options: {
+            paginate: {
+                page: page,
+                limit: limit
+            }
+        }
+    }
+    return optionsReturn
+}
+
 export const AllPosts: FunctionComponent<ALlPostsProps> = ({
     showPostDetail
 }) => {
-    const { loading, error, data } = useAllPostsQuery(GET_ALL_POSTS);
-
+    const { loading, error, data } = useAllPostsQuery(GET_ALL_POSTS, pageQueryOptions(1, 10));
     if (loading) return <h1>Loading all posts...</h1>;
     if (error) return <h1>Something went wrong!</h1>;
 
@@ -27,7 +39,7 @@ export const AllPosts: FunctionComponent<ALlPostsProps> = ({
                 </thead>
                 <tbody>
                     {allPostData.map((post: any) => (
-                        <tr key={post.id} onClick={() => showPostDetail(post.id)} style={{cursor: "pointer"}}>
+                        <tr key={post.id} onClick={() => showPostDetail(post.id)} style={{ cursor: "pointer" }}>
                             <td>{post.id}</td>
                             <td>{post.title}</td>
                         </tr>

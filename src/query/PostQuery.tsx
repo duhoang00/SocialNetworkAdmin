@@ -28,7 +28,7 @@ query (
 }
 `
 
-export const ADD_POST = gql`
+export const CREATE_POST = gql`
   mutation (
     $input: CreatePostInput!
   ) {

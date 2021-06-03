@@ -12,7 +12,7 @@ export function useAllPostsQuery(gqlQuery: DocumentNode) {
   return { loading, error, data };
 }
 
-export function useAddPostMutation(gqlQuery: DocumentNode) {
-    const [addPost] = useMutation<IPostMutation>(gqlQuery)
-    return [addPost]
+export function useCreatePostMutation(gqlQuery: DocumentNode) {
+    const [createPost] = useMutation<IPostMutation>(gqlQuery)
+    return [createPost]
 }

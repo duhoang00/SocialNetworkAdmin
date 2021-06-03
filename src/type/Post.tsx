@@ -5,5 +5,5 @@ export interface IPost {
 }
 
 export interface IPostMutation {
-    addPost: IPost
+    createPost: IPost
 }

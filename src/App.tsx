@@ -1,8 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { PostContainer } from "./components/PostContainer"
+import { CreatePostForm } from "./components/CreatePostForm"
 
 function App() {
+
+  const createPost = () => {
+
+  }
+
   return (
     <>
       <div className="section">
@@ -19,7 +25,7 @@ function App() {
                         <Link to="/Post">Check post</Link>
                       </li>
                       <li>
-                        <Link to="/AddPost">Add post</Link>
+                        <Link to="/CreatePost">Create post</Link>
                       </li>
                     </ul>
                   </aside>
@@ -29,10 +35,10 @@ function App() {
                 <div className="box">
                   <Switch>
                     <Route path="/Post">
-                      <PostContainer/>
+                      <PostContainer />
                     </Route>
-                    <Route path="/AddPost">
-                      <> Add post </>
+                    <Route path="/CreatePost">
+                      <CreatePostForm />
                     </Route>
                   </Switch>
                 </div>

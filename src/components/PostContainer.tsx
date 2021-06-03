@@ -13,11 +13,11 @@ export const PostContainer: FunctionComponent = () => {
     return (
         <div className="columns">
             <div className="column">
-                <h1 className="title is-3">All lists</h1>
+                <h1 className="title is-3">All posts</h1>
                 <AllPosts showPostDetail={showPostDetail} />
             </div>
             <div className="column is-4">
-                <h1 className="title">List detail</h1>
+                <h1 className="title">Post detail</h1>
                 <PostDetail id={postDetailID} />
             </div>
         </div>

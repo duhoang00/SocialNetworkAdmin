@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { GET_ALL_POSTS } from "../query/PostQuery"
+import { GET_ALL_POSTS } from "../fetching/PostQuery"
 import { useAllPostsQuery } from "../request/PostRequest"
 
 type ALlPostsProps = {

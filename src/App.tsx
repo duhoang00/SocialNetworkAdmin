@@ -1,13 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { PostContainer } from "./components/PostContainer"
-import { CreatePostForm } from "./components/CreatePostForm"
+import { CreatePostForm } from "./components/CreatePost"
 
 function App() {
-
-  const createPost = () => {
-
-  }
 
   return (
     <>

@@ -1,5 +1,5 @@
-import { FunctionComponent, useState } from "react";
-import { GET_POST_DETAIL } from "../query/PostQuery"
+import { FunctionComponent } from "react";
+import { GET_POST_DETAIL } from "../fetching/PostQuery"
 import { usePostDetailQuery } from "../request/PostRequest"
 
 type PostDetailProps = {

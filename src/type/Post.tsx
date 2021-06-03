@@ -4,6 +4,7 @@ export interface IPost {
     body: string
 }
 
-export interface IPostMutation {
-    createPost: IPost
+export interface CreatePostInput {
+    title: string,
+    body: string
 }

@@ -1,9 +1,8 @@
-import { DocumentNode, useQuery, useMutation } from "@apollo/client"
-import { IPost, IPostMutation } from "../type/Post"
+import { DocumentNode, useQuery } from "@apollo/client"
+import { IPost } from "../type/Post"
 
 export function usePostDetailQuery(gqlQuery: DocumentNode, id: number) {
-  // console.log("request = " + id)
-  const { loading, error, data } = useQuery<{post: IPost}>(gqlQuery, {variables: {id}});
+  const { loading, error, data } = useQuery<{ post: IPost }>(gqlQuery, { variables: { id } });
   return { loading, error, data };
 }
 
@@ -12,7 +11,8 @@ export function useAllPostsQuery(gqlQuery: DocumentNode) {
   return { loading, error, data };
 }
 
-export function useCreatePostMutation(gqlQuery: DocumentNode) {
-    const [createPost] = useMutation<IPostMutation>(gqlQuery)
-    return [createPost]
-}
+// // CAN NOT DO IT??
+// export function useCreatePostMutation(gqlQuery: DocumentNode) {
+//   const [createPost, { data }] = useMutation(gqlQuery);
+//   return [createPost, { data }]
+// }

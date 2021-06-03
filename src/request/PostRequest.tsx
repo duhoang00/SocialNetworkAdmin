@@ -11,8 +11,7 @@ export function useAllPostsQuery(gqlQuery: DocumentNode) {
   return { loading, error, data };
 }
 
-// // CAN NOT DO IT??
-// export function useCreatePostMutation(gqlQuery: DocumentNode) {
-//   const [createPost, { data }] = useMutation(gqlQuery);
-//   return [createPost, { data }]
-// }
+export function usePostDeleteQuery(gqlQuery: DocumentNode, id: number) {
+  const { loading, error, data } = useQuery<{ deletePost: boolean }>(gqlQuery, { variables: { id } });
+  return { loading, error, data };
+}

@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { PostContainer } from "./components/PostContainer"
 import { UserContainer } from "./components/UserContainer"
 import { CreatePostForm } from "./components/CreatePost"
+import { UserPost } from "./components/UserPost"
+import { PhotoAlbum } from "./components/PhotoAlbum"
 
 function App() {
 
@@ -31,6 +33,16 @@ function App() {
                       <li>
                         <Link to="/User">Check user</Link>
                       </li>
+                      <li>
+                        <Link to="/UserPost">User post</Link>
+                      </li>
+                    </ul>
+
+                    <p className="menu-label">Media</p>
+                    <ul className="menu-list">
+                      <li>
+                        <Link to="/PhotoAlbum">Photo album</Link>
+                      </li>
                     </ul>
                   </aside>
                 </div>
@@ -46,6 +58,12 @@ function App() {
                     </Route>
                     <Route path="/User">
                       <UserContainer />
+                    </Route>
+                    <Route path="/UserPost">
+                      <UserPost />
+                    </Route>
+                    <Route path="/PhotoAlbum">
+                      <PhotoAlbum />
                     </Route>
                   </Switch>
                 </div>

@@ -22,23 +22,23 @@ export const PostDetail: FunctionComponent<PostDetailProps> = ({ id }) => {
 
     return (
         <div className="form">
-            <div className="field" key={data?.post.id}>
+            <div className="field" key={data?.post.id!}>
                 <div className="field">
                     <label className="label">ID</label>
                     <div className="control">
-                        <input className="input" type="text" defaultValue={data?.post.id} />
+                        <input className="input" type="text" defaultValue={data?.post.id!} />
                     </div>
                 </div>
                 <div className="field">
                     <label className="label">Title</label>
                     <div className="control">
-                        <textarea className="textarea" placeholder="Textarea" defaultValue={data?.post.title} ></textarea>
+                        <textarea className="textarea" placeholder="Textarea" defaultValue={data?.post.title!} ></textarea>
                     </div>
                 </div>
                 <div className="field">
                     <label className="label">Body</label>
                     <div className="control">
-                        <textarea className="textarea" placeholder="Textarea" defaultValue={data?.post.body} rows={10} onChange={(e) => {
+                        <textarea className="textarea" placeholder="Textarea" defaultValue={data?.post.body!} rows={10} onChange={(e) => {
                             e.preventDefault();
                             setNewPostContent(newPostContent => ({
                                 id: newPostContent.id,

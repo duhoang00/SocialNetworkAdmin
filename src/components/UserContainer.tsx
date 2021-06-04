@@ -1,25 +1,49 @@
 import { FunctionComponent, useState } from "react";
-import { PostDetail } from "./PostDetail"
-import { AllPosts } from "./AllPosts";
+import { useGetUserQuery } from "../request/UserRequest";
+import { GET_USER } from "../fetching/UserQuery"
 
 export const UserContainer: FunctionComponent = () => {
+    const [userDetailID, setUserDetailID] = useState(1)
+    const [queryID, setQueryID] = useState(1)
 
-    const [postDetailID, setPostDetailID] = useState(1)
-
-    const showPostDetail = (id: number) => {
-        setPostDetailID(id)
-    }
+    const { loading, error, data } = useGetUserQuery(GET_USER, queryID);
+    if (loading) return <h1>Loading post detail...</h1>;
+    if (error) return <h1>Something went wrong!</h1>;
 
     return (
-        <div className="columns">
-            <div className="column">
-                <h1 className="title is-3">All posts</h1>
-                <AllPosts showPostDetail={showPostDetail} />
+        <>
+            <h1 className="title is-3">User information</h1>
+            <div className="">
+                <label className="label">ID</label>
+                <div className="field has-addons">
+                    <div className="control">
+                        <input className="input" defaultValue={data?.user.id!} type="number" onChange={(e) => { setUserDetailID(parseInt(e.target.value!)) }} />
+                    </div>
+                    <div className="control">
+                        <button className="button is-success" onClick={(e) => { setQueryID(userDetailID); }} >Check</button>
+                    </div>
+
+                </div>
+
+                <div className="field">
+                    <label className="label">Username</label>
+                    <input className="input" defaultValue={data?.user.username!} />
+                </div>
+
+                <div className="field">
+                    <label className="label">Email</label>
+                    <input className="input" defaultValue={data?.user.email!} />
+                </div>
+                <label className="label">Address Geo </label>
+                <div className="field">
+                    <label className="label">Lat</label>
+                    <input className="input" defaultValue={data?.user.address.geo.lat!} />
+                </div>
+                <div className="field">
+                    <label className="label">Lng</label>
+                    <input className="input" defaultValue={data?.user.address.geo.lng!} />
+                </div>
             </div>
-            <div className="column is-4">
-                <h1 className="title">Post detail</h1>
-                <PostDetail id={postDetailID} />
-            </div>
-        </div>
+        </>
     )
 }

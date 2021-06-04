@@ -1,13 +1,13 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { PostContainer } from "./components/PostContainer"
-import { UserContainer } from "./components/UserContainer"
-import { CreatePostForm } from "./components/CreatePost"
-import { UserPost } from "./components/UserPost"
-import { PhotoAlbum } from "./components/PhotoAlbum"
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
+import { PostContainer } from "./components/PostContainer";
+import { UserContainer } from "./components/UserContainer";
+import { CreatePostForm } from "./components/CreatePost";
+import { UserPost } from "./components/UserPost";
+import { PhotoAlbum } from "./components/PhotoAlbum";
+import { Home } from "./components/Home";
 
 function App() {
-
   return (
     <>
       <div className="section">
@@ -18,6 +18,12 @@ function App() {
               <div className="column is-2">
                 <div className="box">
                   <aside className="menu">
+                    <p className="menu-label">Home</p>
+                    <ul className="menu-list">
+                      <li>
+                        <Link to="/Home">Home</Link>
+                      </li>
+                    </ul>
                     <p className="menu-label">Post</p>
                     <ul className="menu-list">
                       <li>
@@ -50,6 +56,12 @@ function App() {
               <div className="column">
                 <div className="box">
                   <Switch>
+                    <Route exact path="/">
+                      <Redirect to="/Home" />
+                    </Route>
+                    <Route path="/Home">
+                      <Home />
+                    </Route>
                     <Route path="/Post">
                       <PostContainer />
                     </Route>

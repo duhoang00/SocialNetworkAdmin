@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import { PostContainer } from "./components/PostContainer";
 import { UserContainer } from "./components/UserContainer";

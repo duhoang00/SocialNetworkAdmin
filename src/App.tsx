@@ -5,6 +5,7 @@ import { CreatePostForm } from "./components/CreatePost";
 import { UserPost } from "./components/UserPost";
 import { PhotoAlbum } from "./components/PhotoAlbum";
 import { Home } from "./components/Home";
+import 'antd/dist/antd.css';
 
 function App() {
   return (

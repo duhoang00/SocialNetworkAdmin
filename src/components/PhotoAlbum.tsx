@@ -28,12 +28,12 @@ export const PhotoAlbum: FunctionComponent = () => {
 
                 <div className="field">
                     <label className="label">Title</label>
-                    <input className="input" defaultValue={renderData.title!} />
+                    <input className="input" defaultValue={renderData.title} />
                 </div>
 
                 <div className="field">
                     <label className="label">User ID</label>
-                    <input className="input" defaultValue={renderData.user.id!} />
+                    <input className="input" defaultValue={renderData.user.id} />
                 </div>
             </div>
         </>

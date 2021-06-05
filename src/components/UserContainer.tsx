@@ -8,7 +8,7 @@ export const UserContainer: FunctionComponent = () => {
 
     const { loading, error, data } = useGetUserQuery(GET_USER, queryID);
     if (loading) return <h1>Loading post detail...</h1>;
-    if (error) return <h1>Something went wrong!</h1>;
+    if (error) return <h1>Something went wrong</h1>;
 
     return (
         <>
@@ -17,7 +17,7 @@ export const UserContainer: FunctionComponent = () => {
                 <label className="label">ID</label>
                 <div className="field has-addons">
                     <div className="control">
-                        <input className="input" defaultValue={data?.user.id!} type="number" onChange={(e) => { setUserDetailID(parseInt(e.target.value!)) }} />
+                        <input className="input" defaultValue={data?.user.id} type="number" onChange={(e) => { setUserDetailID(parseInt(e.target.value)) }} />
                     </div>
                     <div className="control">
                         <button className="button is-success" onClick={(e) => { setQueryID(userDetailID); }} >Check</button>
@@ -27,21 +27,21 @@ export const UserContainer: FunctionComponent = () => {
 
                 <div className="field">
                     <label className="label">Username</label>
-                    <input className="input" defaultValue={data?.user.username!} />
+                    <input className="input" defaultValue={data?.user.username} />
                 </div>
 
                 <div className="field">
                     <label className="label">Email</label>
-                    <input className="input" defaultValue={data?.user.email!} />
+                    <input className="input" defaultValue={data?.user.email} />
                 </div>
                 <label className="label">Address Geo </label>
                 <div className="field">
                     <label className="label">Lat</label>
-                    <input className="input" defaultValue={data?.user.address.geo.lat!} />
+                    <input className="input" defaultValue={data?.user.address.geo.lat} />
                 </div>
                 <div className="field">
                     <label className="label">Lng</label>
-                    <input className="input" defaultValue={data?.user.address.geo.lng!} />
+                    <input className="input" defaultValue={data?.user.address.geo.lng} />
                 </div>
             </div>
         </>

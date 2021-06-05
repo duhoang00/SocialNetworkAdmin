@@ -16,18 +16,18 @@ export const CreatePostForm: FunctionComponent = () => {
                         setInput(input => ({
                             input: {
                                 title: e.target.value,
-                                body: input?.input.body!
+                                body: input?.input.body 
                             }
                         }))
                     }}></textarea>
                 </div>
-
+ 
                 <div className="field">
                     <label className="label">Body</label>
                     <textarea className="textarea" onChange={(e) => {
                         setInput(newPost => ({
                             input: {
-                                title: input?.input.title!,
+                                title: input?.input.title,
                                 body: e.target.value
                             }
                         }))
@@ -40,7 +40,7 @@ export const CreatePostForm: FunctionComponent = () => {
                             e.preventDefault()
                             console.log(input)
                             createPost({
-                                variables: input!
+                                variables: input
                             })
                             console.log(data)
                         }}>

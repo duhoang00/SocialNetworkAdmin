@@ -4,8 +4,9 @@ import { usePostDetailQuery } from "../request/PostRequest";
 import { useMutation } from "@apollo/client";
 import { DELETE_POST, UPDATE_POST } from "../fetching/PostMutation";
 import { UpdatePostInput } from "../type/Post";
-import { Input, Button, Row, Col } from "antd";
+import { Input, Button, Row, Col, Spin } from "antd";
 import Title from "antd/lib/typography/Title";
+import { render } from "@testing-library/react";
 
 type PostDetailProps = {
   id: number;
@@ -16,37 +17,35 @@ export const PostDetail: FunctionComponent<PostDetailProps> = ({ id }) => {
 
   const [updatePost, updateStatus] = useMutation(UPDATE_POST);
 
-  const { loading, error, data } = usePostDetailQuery(GET_POST_DETAIL, id);
+  const { loading, error, data } = usePostDetailQuery(GET_POST_DETAIL, id); 
   const [newPostContent, setNewPostContent] = useState<UpdatePostInput>({
     id: id,
     input: { body: data?.post.body },
   });
 
-  if (loading) return <h1>Loading post detail...</h1>;
-  if (error) return <h1>Something went wrong</h1>;
-
+  if (loading) return <Spin />
+  if (error) return <Spin />
+  const renderData = data.post;
   const { TextArea } = Input;
-
   return (
     <>
-      <Row gutter={[16, 16]}>
+      <Row gutter={[16, 16]} key={renderData.id}>
         <Col span={24}>
           <Title level={5}>ID</Title>
-          <Input type="text" defaultValue={data?.post.id} />
+          <Input type="text" defaultValue={renderData.id} />
         </Col>
 
         <Col span={24}>
         <Title level={5}>Title</Title>
-          <TextArea defaultValue={data?.post.title} />
+          <TextArea defaultValue={renderData.title} />
         </Col>
 
         <Col span={24}>
         <Title level={5}>Body</Title>
           <TextArea
-            defaultValue={data?.post.body}
+            defaultValue={renderData.body}
             rows={5}
             onChange={(e) => {
-              e.preventDefault();
               setNewPostContent((newPostContent) => ({
                 id: newPostContent.id,
                 input: {
@@ -61,7 +60,6 @@ export const PostDetail: FunctionComponent<PostDetailProps> = ({ id }) => {
           <Button
             type="primary"
             onClick={(e) => {
-              e.preventDefault();
               updatePost({
                 variables: newPostContent,
               });
@@ -74,9 +72,8 @@ export const PostDetail: FunctionComponent<PostDetailProps> = ({ id }) => {
           <Button
             type="primary"
             onClick={(e) => {
-              e.preventDefault();
               deletePost({
-                variables: { id: data?.post.id },
+                variables: { id: renderData.id },
               });
             }}
           >

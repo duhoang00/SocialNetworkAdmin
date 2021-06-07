@@ -1,7 +1,7 @@
 import { FunctionComponent, useState } from "react";
 import { useGetUserPostQuery } from "../request/UserRequest";
 import { GET_USER_POST } from "../fetching/UserQuery";
-import { Input, Row, Col, Typography, Divider } from "antd";
+import { Input, Row, Col, Typography, Divider, Spin } from "antd";
 
 export const UserPost: FunctionComponent = () => {
   const [queryUserID, setQueryUserID] = useState(1);
@@ -10,8 +10,8 @@ export const UserPost: FunctionComponent = () => {
     GET_USER_POST,
     queryUserID
   );
-  if (loading) return <h1>Loading post detail...</h1>;
-  if (error) return <h1>Something went wrong</h1>;
+  if (loading) return <Spin />;
+  if (error) return <Spin />;
   const { Search } = Input;
   const { Title } = Typography;
   const onSearch = (value) => {
@@ -33,11 +33,11 @@ export const UserPost: FunctionComponent = () => {
       {renderData.map((post: any) => (
         <Row key={post.id} gutter={16}>
           <Col span={2}>
-          <Title level={5}>ID</Title>
+            <Title level={5}>ID</Title>
             <Input defaultValue={post.id} />
           </Col>
           <Col span={22}>
-          <Title level={5}>Title</Title>
+            <Title level={5}>Title</Title>
             <Input defaultValue={post.title} />
           </Col>
         </Row>

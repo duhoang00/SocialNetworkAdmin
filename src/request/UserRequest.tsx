@@ -2,7 +2,6 @@ import { DocumentNode, useQuery } from "@apollo/client"
 import { IUser } from "../type/User"
 
 export function useGetUserQuery(gqlQuery: DocumentNode, id: number) {
-    console.log(id)
     const { loading, error, data } = useQuery<{ user: IUser }>(gqlQuery, { variables: { id } });
     return { loading, error, data };
 }

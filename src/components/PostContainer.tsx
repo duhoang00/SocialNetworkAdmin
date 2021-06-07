@@ -7,7 +7,7 @@ export const PostContainer: FunctionComponent = () => {
   const [postDetailID, setPostDetailID] = useState(1);
 
   const showPostDetail = (id: number) => {
-    setPostDetailID(id);
+    setPostDetailID(id)
   };
 
   const { Title } = Typography;

@@ -1,22 +1,23 @@
 import { FunctionComponent, useState } from "react";
 import { useGetUserQuery } from "../request/UserRequest";
 import { GET_USER } from "../fetching/UserQuery";
-import { Input, Row, Col, Typography } from "antd";
+import { Input, Row, Col, Typography, Spin } from "antd";
 
 export const UserContainer: FunctionComponent = () => {
   const [userDetailID, setUserDetailID] = useState(1);
   const [queryID, setQueryID] = useState(1);
 
   const { loading, error, data } = useGetUserQuery(GET_USER, queryID);
-  if (loading) return <h1>Loading post detail...</h1>;
-  if (error) return <h1>Something went wrong</h1>;
+  if (loading) return <Spin />
+  if (error) return <Spin/>
 
   const { Search } = Input;
   const { Title } = Typography;
   const onSearch = (value) => {
     setQueryID(value);
   };
-
+  const userData = data?.user;
+  const userDataAddress = userData.address;
   return (
     <>
       <Title>User information</Title>
@@ -33,19 +34,19 @@ export const UserContainer: FunctionComponent = () => {
         </Col>
         <Col span={24}>
           <Title level={5}>Username</Title>
-          <Input defaultValue={data?.user.username} />
+          <Input defaultValue={userData.username} />
         </Col>
         <Col span={24}>
           <Title level={5}>Email</Title>
-          <Input defaultValue={data?.user.email} />
+          <Input defaultValue={userData.email} />
         </Col>
         <Col span={24}>
           <Title level={5}>Lat</Title>
-          <Input defaultValue={data?.user.address.geo.lat} />
+          <Input defaultValue={userDataAddress.geo.lat} />
         </Col>
         <Col span={24}>
           <Title level={5}>Lng</Title>
-          <Input defaultValue={data?.user.address.geo.lng} />
+          <Input defaultValue={userDataAddress.geo.lng} />
         </Col>
       </Row>
     </>

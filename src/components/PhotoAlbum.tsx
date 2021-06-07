@@ -1,7 +1,7 @@
 import { FunctionComponent, useState } from "react";
 import { useGetPhotoAlbumQuery } from "../request/MediaRequest";
 import { GET_PHOTO_ALBUM } from "../fetching/MediaQuery";
-import { Input, Typography, Row, Col } from "antd";
+import { Input, Typography, Row, Col, Spin } from "antd";
 
 export const PhotoAlbum: FunctionComponent = () => {
   const [queryID, setQueryID] = useState(1);
@@ -10,8 +10,8 @@ export const PhotoAlbum: FunctionComponent = () => {
     GET_PHOTO_ALBUM,
     queryID
   );
-  if (loading) return <h1>Loading post detail...</h1>;
-  if (error) return <h1>Something went wrong!</h1>;
+  if (loading) return <Spin />
+  if (error) return <Spin />
 
   const renderData = data.photo.album;
   const { Search } = Input;

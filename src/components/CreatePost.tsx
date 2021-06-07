@@ -49,12 +49,9 @@ export const CreatePostForm: FunctionComponent = () => {
           <Button
             type="primary"
             onClick={(e) => {
-              e.preventDefault();
-              console.log(input);
               createPost({
                 variables: input,
               });
-              console.log(data);
             }}
           >
             Create

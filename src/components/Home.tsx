@@ -1,13 +1,12 @@
 import { FunctionComponent } from "react";
-import { Link } from "react-router-dom";
-import { Button } from "antd";
+import { Typography } from "antd";
 
 export const Home: FunctionComponent = () => {
+  const { Title } = Typography;
+
   return (
     <>
-      <div style={{ textAlign: "center" }}>
-        Social Network Admin
-      </div>
+      <Title style={{ textAlign: "center" }}>Social Network Admin</Title>
     </>
   );
 };

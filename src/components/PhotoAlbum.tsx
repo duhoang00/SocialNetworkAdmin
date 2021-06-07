@@ -1,10 +1,9 @@
 import { FunctionComponent, useState } from "react";
 import { useGetPhotoAlbumQuery } from "../request/MediaRequest";
 import { GET_PHOTO_ALBUM } from "../fetching/MediaQuery";
-import { Input } from "antd";
+import { Input, Typography, Row, Col } from "antd";
 
 export const PhotoAlbum: FunctionComponent = () => {
-  const [photoAlbumID, setPhotoAlbumID] = useState(1);
   const [queryID, setQueryID] = useState(1);
 
   const { loading, error, data } = useGetPhotoAlbumQuery(
@@ -16,63 +15,34 @@ export const PhotoAlbum: FunctionComponent = () => {
 
   const renderData = data.photo.album;
   const { Search } = Input;
+  const { Title } = Typography;
   const onSearch = (value) => {
     setQueryID(value);
   };
 
   return (
     <>
-      <h1 className="title is-3">Photo album information</h1>
-      <label>ID</label>
-      <Search
-        defaultValue={queryID}
-        allowClear
-        enterButton="Search"
-        onSearch={onSearch}
-      />
-      <br />
-      <br />
-      <label>Title</label>
-      <Input defaultValue={renderData.title} />
-      <br />
-      <br />
-      <label>User ID</label>
-      <Input defaultValue={renderData.user.id} />
-      {/* <div className="">
-        <label className="label">ID</label>
-        <div className="field has-addons">
-          <div className="control">
-            <input
-              className="input"
-              defaultValue={renderData.id}
-              type="number"
-              onChange={(e) => {
-                setPhotoAlbumID(parseInt(e.target.value));
-              }}
-            />
-          </div>
-          <div className="control">
-            <button
-              className="button is-success"
-              onClick={(e) => {
-                setQueryID(photoAlbumID);
-              }}
-            >
-              Check
-            </button>
-          </div>
-        </div>
+      <Title>Photo album information</Title>
 
-        <div className="field">
-          <label className="label">Title</label>
-          <input className="input" defaultValue={renderData.title} />
-        </div>
-
-        <div className="field">
-          <label className="label">User ID</label>
-          <input className="input" defaultValue={renderData.user.id} />
-        </div>
-      </div> */}
+      <Row gutter={[16, 16]}>
+        <Col span={24}>
+          <Title level={5}>ID</Title>
+          <Search
+            defaultValue={queryID}
+            allowClear
+            enterButton="Search"
+            onSearch={onSearch}
+          />
+        </Col>
+        <Col span={24}>
+          <Title level={5}>Title</Title>
+          <Input defaultValue={renderData.title} />
+        </Col>
+        <Col span={24}>
+          <Title level={5}>User ID</Title>
+          <Input defaultValue={renderData.user.id} />
+        </Col>
+      </Row>
     </>
   );
 };

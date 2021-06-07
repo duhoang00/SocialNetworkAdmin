@@ -4,7 +4,8 @@ import { usePostDetailQuery } from "../request/PostRequest";
 import { useMutation } from "@apollo/client";
 import { DELETE_POST, UPDATE_POST } from "../fetching/PostMutation";
 import { UpdatePostInput } from "../type/Post";
-import { Input, Button, Space } from "antd";
+import { Input, Button, Row, Col } from "antd";
+import Title from "antd/lib/typography/Title";
 
 type PostDetailProps = {
   id: number;
@@ -28,118 +29,61 @@ export const PostDetail: FunctionComponent<PostDetailProps> = ({ id }) => {
 
   return (
     <>
-      <Input type="text" defaultValue={data?.post.id} />
-      <br />
-      <br />
-      <TextArea defaultValue={data?.post.title} />
-      <br />
-      <br />
-      <TextArea
-        defaultValue={data?.post.body}
-        rows={5}
-        onChange={(e) => {
-          e.preventDefault();
-          setNewPostContent((newPostContent) => ({
-            id: newPostContent.id,
-            input: {
-              body: e.target.value,
-            },
-          }));
-        }}
-      />
-      <br />
-      <br />
-      <Space>
-        <Button
-          type="primary"
-          onClick={(e) => {
-            e.preventDefault();
-            updatePost({
-              variables: newPostContent,
-            });
-          }}
-        >
-          Update
-        </Button>
-        <Button
-          type="primary"
-          onClick={(e) => {
-            e.preventDefault();
-            deletePost({
-              variables: { id: data?.post.id },
-            });
-          }}
-        >
-          Delete
-        </Button>
-      </Space>
-    </>
+      <Row gutter={[16, 16]}>
+        <Col span={24}>
+          <Title level={5}>ID</Title>
+          <Input type="text" defaultValue={data?.post.id} />
+        </Col>
 
-    // <div className="form">
-    //   <div className="field" key={data?.post.id}>
-    //     <div className="field">
-    //       <label className="label">ID</label>
-    //       <div className="control">
-    //         <Input className="input" type="text" defaultValue={data?.post.id} />
-    //       </div>
-    //     </div>
-    //     <div className="field">
-    //       <label className="label">Title</label>
-    //       <div className="control">
-    //         <TextArea
-    //           className="textarea"
-    //           placeholder="Textarea"
-    //           defaultValue={data?.post.title}
-    //         />
-    //       </div>
-    //     </div>
-    //     <div className="field">
-    //       <label className="label">Body</label>
-    //       <div className="control">
-    //         <TextArea
-    //           className="textarea"
-    //           placeholder="Textarea"
-    //           defaultValue={data?.post.body}
-    //           rows={5}
-    //           onChange={(e) => {
-    //             e.preventDefault();
-    //             setNewPostContent((newPostContent) => ({
-    //               id: newPostContent.id,
-    //               input: {
-    //                 body: e.target.value,
-    //               },
-    //             }));
-    //           }}
-    //         />
-    //       </div>
-    //     </div>
-    //   </div>
-    //   <div className="field is-grouped is-grouped-multiline">
-    //     <div className="control">
-    //       <Button type="primary"
-    //         onClick={(e) => {
-    //           e.preventDefault();
-    //           updatePost({
-    //             variables: newPostContent,
-    //           });
-    //         }}
-    //       >
-    //         Update
-    //       </Button>
-    //     </div>
-    //     <div className="control">
-    //       <Button type="primary"
-    //         onClick={(e) => {
-    //           e.preventDefault();
-    //           deletePost({
-    //             variables: { id: data?.post.id },
-    //           });
-    //         }}
-    //       >
-    //         Delete
-    //       </Button>
-    //     </div>
-    //   </div>
-    // </div>
+        <Col span={24}>
+        <Title level={5}>Title</Title>
+          <TextArea defaultValue={data?.post.title} />
+        </Col>
+
+        <Col span={24}>
+        <Title level={5}>Body</Title>
+          <TextArea
+            defaultValue={data?.post.body}
+            rows={5}
+            onChange={(e) => {
+              e.preventDefault();
+              setNewPostContent((newPostContent) => ({
+                id: newPostContent.id,
+                input: {
+                  body: e.target.value,
+                },
+              }));
+            }}
+          />
+        </Col>
+
+        <Col span={12}>
+          <Button
+            type="primary"
+            onClick={(e) => {
+              e.preventDefault();
+              updatePost({
+                variables: newPostContent,
+              });
+            }}
+          >
+            Update
+          </Button>
+        </Col>
+        <Col span={12}>
+          <Button
+            type="primary"
+            onClick={(e) => {
+              e.preventDefault();
+              deletePost({
+                variables: { id: data?.post.id },
+              });
+            }}
+          >
+            Delete
+          </Button>
+        </Col>
+      </Row>
+    </>
   );
 };

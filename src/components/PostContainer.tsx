@@ -1,7 +1,7 @@
 import { FunctionComponent, useState } from "react";
 import { PostDetail } from "./PostDetail";
 import { AllPosts } from "./AllPosts";
-import { Row, Col } from "antd";
+import { Row, Col, Typography } from "antd";
 
 export const PostContainer: FunctionComponent = () => {
   const [postDetailID, setPostDetailID] = useState(1);
@@ -10,27 +10,18 @@ export const PostContainer: FunctionComponent = () => {
     setPostDetailID(id);
   };
 
+  const { Title } = Typography;
+
   return (
-    <Row>
-      <Col flex={2}>
-        <h1 className="title">All posts</h1>
+    <Row justify="space-around">
+      <Col span={8}>
+        <Title className="title">All posts</Title>
         <AllPosts showPostDetail={showPostDetail} />
       </Col>
-      <Col flex={3}>
-        <h1 className="title">Post detail</h1>
+      <Col span={8}>
+        <Title className="title">Post detail</Title>
         <PostDetail id={postDetailID} />
       </Col>
     </Row>
-
-    // <div className="columns">
-    //     <div className="column">
-    //         <h1 className="title is-3">All posts</h1>
-    //         <AllPosts showPostDetail={showPostDetail} />
-    //     </div>
-    //     <div className="column is-4">
-    //         <h1 className="title">Post detail</h1>
-    //         <PostDetail id={postDetailID} />
-    //     </div>
-    // </div>
   );
 };

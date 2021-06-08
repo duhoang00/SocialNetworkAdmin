@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useCallback, useMemo, useState } from "react";
 import { useGetPhotoAlbumQuery } from "../request/MediaRequest";
 import { GET_PHOTO_ALBUM } from "../fetching/MediaQuery";
 import { Input, Typography, Row, Col, Spin } from "antd";
@@ -16,9 +16,16 @@ export const PhotoAlbum: FunctionComponent = () => {
   const renderData = data.photo.album;
   const { Search } = Input;
   const { Title } = Typography;
-  const onSearch = (value) => {
-    setQueryID(value);
-  };
+
+  // const onSearch = (value) => {
+    // setQueryID(value);
+  // };
+
+  const onSearch = useCallback(() => {
+    return (value) => {
+      setQueryID(value)
+    }
+  }, [queryID])
 
   return (
     <>

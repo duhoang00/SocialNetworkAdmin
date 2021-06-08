@@ -15,8 +15,9 @@ export const UserPost: FunctionComponent = () => {
     GET_USER_POST,
     queryUserID
   );
-  if (loading) return <Spin />;
-  if (error) return <Spin />;
+  if (loading || error) {
+    return <Spin />;
+  }
   const { Search } = Input;
   const { Title } = Typography;
   const renderData = data.user.posts.data;

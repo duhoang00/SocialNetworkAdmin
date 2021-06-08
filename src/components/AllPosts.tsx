@@ -27,8 +27,10 @@ export const AllPosts: FunctionComponent<ALlPostsProps> = ({
     GET_ALL_POSTS,
     pageQueryOptions(1, 10)
   );
-  if (loading) return <Spin />;
-  if (error) return  <Spin />;
+
+  if (loading || error) {
+    return <Spin />;
+  }
 
   const allPostData = data.posts.data.map((post) => ({
     ...post,

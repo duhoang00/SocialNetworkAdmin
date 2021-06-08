@@ -1,9 +1,7 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const GET_PHOTO_ALBUM = gql`
-query (
-    $id: ID!
-  ) {
+  query ($id: ID!) {
     photo(id: $id) {
       album {
         id
@@ -14,4 +12,4 @@ query (
       }
     }
   }
-`
+`;

@@ -15,8 +15,9 @@ export const PhotoAlbum: FunctionComponent = () => {
     GET_PHOTO_ALBUM,
     queryID
   );
-  if (loading) return <Spin />;
-  if (error) return <Spin />;
+  if (loading || error) {
+    return <Spin />;
+  }
 
   const renderData = data.photo.album;
   const { Search } = Input;

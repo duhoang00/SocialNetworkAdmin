@@ -17,14 +17,14 @@ export const PostDetail: FunctionComponent<PostDetailProps> = ({ id }) => {
 
   const [updatePost, updateStatus] = useMutation(UPDATE_POST);
 
-  const { loading, error, data } = usePostDetailQuery(GET_POST_DETAIL, id); 
+  const { loading, error, data } = usePostDetailQuery(GET_POST_DETAIL, id);
   const [newPostContent, setNewPostContent] = useState<UpdatePostInput>({
     id: id,
     input: { body: data?.post.body },
   });
 
-  if (loading) return <Spin />
-  if (error) return <Spin />
+  if (loading) return <Spin />;
+  if (error) return <Spin />;
   const renderData = data.post;
   const { TextArea } = Input;
   return (
@@ -36,12 +36,12 @@ export const PostDetail: FunctionComponent<PostDetailProps> = ({ id }) => {
         </Col>
 
         <Col span={24}>
-        <Title level={5}>Title</Title>
+          <Title level={5}>Title</Title>
           <TextArea defaultValue={renderData.title} />
         </Col>
 
         <Col span={24}>
-        <Title level={5}>Body</Title>
+          <Title level={5}>Body</Title>
           <TextArea
             defaultValue={renderData.body}
             rows={5}

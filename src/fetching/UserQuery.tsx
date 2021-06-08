@@ -1,9 +1,7 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const GET_USER = gql`
-query (
-  $id: ID!
-){
+  query ($id: ID!) {
     user(id: $id) {
       id
       username
@@ -16,12 +14,10 @@ query (
       }
     }
   }
-`
+`;
 
 export const GET_USER_POST = gql`
-query (
-  $id: ID!
-) {
+  query ($id: ID!) {
     user(id: $id) {
       posts {
         data {
@@ -31,5 +27,4 @@ query (
       }
     }
   }
-`
-
+`;

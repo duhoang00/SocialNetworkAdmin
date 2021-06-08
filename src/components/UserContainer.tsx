@@ -12,8 +12,9 @@ export const UserContainer: FunctionComponent = () => {
     [queryID]
   );
   const { loading, error, data } = useGetUserQuery(GET_USER, queryID);
-  if (loading) return <Spin />;
-  if (error) return <Spin />;
+  if (loading || error) {
+    return <Spin />;
+  }
 
   const { Search } = Input;
   const { Title } = Typography;

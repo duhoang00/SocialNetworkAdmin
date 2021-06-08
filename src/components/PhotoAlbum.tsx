@@ -4,27 +4,22 @@ import { GET_PHOTO_ALBUM } from "../fetching/MediaQuery";
 import { Input, Typography, Row, Col, Spin } from "antd";
 
 export const PhotoAlbum: FunctionComponent = () => {
+  const onSearchHandler = useCallback((value) => {
+    setQueryID(value)
+  }, [])
+  
   const [queryID, setQueryID] = useState(1);
 
   const { loading, error, data } = useGetPhotoAlbumQuery(
     GET_PHOTO_ALBUM,
     queryID
   );
-  if (loading) return <Spin />
-  if (error) return <Spin />
+  if (loading) return <Spin />;
+  if (error) return <Spin />;
 
   const renderData = data.photo.album;
   const { Search } = Input;
   const { Title } = Typography;
-
-  const onSearch = (value) => {
-    setQueryID(value);
-  };
-
-
-  // const onSearchHandler = (value) = useCallback(() => {
-  //   setQueryID(value)
-  // }, [value])
 
   return (
     <>
@@ -37,7 +32,7 @@ export const PhotoAlbum: FunctionComponent = () => {
             defaultValue={queryID}
             allowClear
             enterButton="Search"
-            onSearch={onSearch}
+            onSearch={onSearchHandler}
           />
         </Col>
         <Col span={24}>

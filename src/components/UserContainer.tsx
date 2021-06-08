@@ -1,21 +1,22 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useCallback, useState } from "react";
 import { useGetUserQuery } from "../request/UserRequest";
 import { GET_USER } from "../fetching/UserQuery";
 import { Input, Row, Col, Typography, Spin } from "antd";
 
 export const UserContainer: FunctionComponent = () => {
-  const [userDetailID, setUserDetailID] = useState(1);
   const [queryID, setQueryID] = useState(1);
-
+  const onSearchHandler = useCallback(
+    (value) => {
+      setQueryID(value);
+    },
+    [queryID]
+  );
   const { loading, error, data } = useGetUserQuery(GET_USER, queryID);
-  if (loading) return <Spin />
-  if (error) return <Spin/>
+  if (loading) return <Spin />;
+  if (error) return <Spin />;
 
   const { Search } = Input;
   const { Title } = Typography;
-  const onSearch = (value) => {
-    setQueryID(value);
-  };
   const userData = data?.user;
   const userDataAddress = userData.address;
   return (
@@ -29,7 +30,7 @@ export const UserContainer: FunctionComponent = () => {
             defaultValue={data.user.id}
             allowClear
             enterButton="Search"
-            onSearch={onSearch}
+            onSearch={onSearchHandler}
           />
         </Col>
         <Col span={24}>

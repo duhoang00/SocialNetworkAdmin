@@ -1,11 +1,16 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useState, useCallback } from "react";
 import { useGetUserPostQuery } from "../request/UserRequest";
 import { GET_USER_POST } from "../fetching/UserQuery";
 import { Input, Row, Col, Typography, Divider, Spin } from "antd";
 
 export const UserPost: FunctionComponent = () => {
   const [queryUserID, setQueryUserID] = useState(1);
-
+  const onSearchHandler = useCallback(
+    (value) => {
+      setQueryUserID(value);
+    },
+    [queryUserID]
+  );
   const { loading, error, data } = useGetUserPostQuery(
     GET_USER_POST,
     queryUserID
@@ -14,9 +19,6 @@ export const UserPost: FunctionComponent = () => {
   if (error) return <Spin />;
   const { Search } = Input;
   const { Title } = Typography;
-  const onSearch = (value) => {
-    setQueryUserID(value);
-  };
   const renderData = data.user.posts.data;
   return (
     <>
@@ -27,7 +29,7 @@ export const UserPost: FunctionComponent = () => {
         defaultValue={queryUserID}
         allowClear
         enterButton="Search"
-        onSearch={onSearch}
+        onSearch={onSearchHandler}
       />
       <Divider orientation="center">User's post detail</Divider>
       {renderData.map((post: any) => (

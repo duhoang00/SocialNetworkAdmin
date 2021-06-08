@@ -4,12 +4,13 @@ import { GET_PHOTO_ALBUM } from "../fetching/MediaQuery";
 import { Input, Typography, Row, Col, Spin } from "antd";
 
 export const PhotoAlbum: FunctionComponent = () => {
-  const onSearchHandler = useCallback((value) => {
-    setQueryID(value)
-  }, [])
-  
   const [queryID, setQueryID] = useState(1);
-
+  const onSearchHandler = useCallback(
+    (value) => {
+      setQueryID(value);
+    },
+    [queryID]
+  );
   const { loading, error, data } = useGetPhotoAlbumQuery(
     GET_PHOTO_ALBUM,
     queryID

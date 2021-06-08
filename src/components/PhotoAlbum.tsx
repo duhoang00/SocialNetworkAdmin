@@ -17,15 +17,14 @@ export const PhotoAlbum: FunctionComponent = () => {
   const { Search } = Input;
   const { Title } = Typography;
 
-  // const onSearch = (value) => {
-    // setQueryID(value);
-  // };
+  const onSearch = (value) => {
+    setQueryID(value);
+  };
 
-  const onSearch = useCallback(() => {
-    return (value) => {
-      setQueryID(value)
-    }
-  }, [queryID])
+
+  // const onSearchHandler = (value) = useCallback(() => {
+  //   setQueryID(value)
+  // }, [value])
 
   return (
     <>

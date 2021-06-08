@@ -1,8 +1,9 @@
 import { DocumentNode, useQuery } from "@apollo/client";
-import { IPost, PageQueryOptions } from "../type/Post";
+
+import { Post, PageQueryOptions } from "../type/Post";
 
 export function usePostDetailQuery(gqlQuery: DocumentNode, id: number) {
-  const { loading, error, data } = useQuery<{ post: IPost }>(gqlQuery, {
+  const { loading, error, data } = useQuery<{ post: Post }>(gqlQuery, {
     variables: { id },
   });
   return { loading, error, data };

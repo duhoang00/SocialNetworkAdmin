@@ -1,8 +1,9 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent } from "react";
+import { Table, Spin } from "antd";
+
 import { GET_ALL_POSTS } from "../fetching/PostQuery";
 import { useAllPostsQuery } from "../request/PostRequest";
 import { PageQueryOptions } from "../type/Post";
-import { Table, Spin } from "antd";
 
 type ALlPostsProps = {
   showPostDetail: (id: number) => void;

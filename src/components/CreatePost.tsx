@@ -1,8 +1,9 @@
+import { FunctionComponent, useState } from "react";
 import { useMutation } from "@apollo/client";
-import React, { FunctionComponent, useState } from "react";
+import { Input, Button, Row, Col, Typography } from "antd";
+
 import { CREATE_POST } from "../fetching/PostMutation";
 import { CreatePostInput } from "../type/Post";
-import { Input, Button, Row, Col, Typography } from "antd";
 
 export const CreatePostForm: FunctionComponent = () => {
   const [input, setInput] = useState<CreatePostInput>();

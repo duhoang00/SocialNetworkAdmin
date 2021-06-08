@@ -1,12 +1,12 @@
 import { FunctionComponent, useState } from "react";
+import { useMutation } from "@apollo/client";
+import { Input, Button, Row, Col, Spin } from "antd";
+import { Typography } from "antd";
+
 import { GET_POST_DETAIL } from "../fetching/PostQuery";
 import { usePostDetailQuery } from "../request/PostRequest";
-import { useMutation } from "@apollo/client";
 import { DELETE_POST, UPDATE_POST } from "../fetching/PostMutation";
 import { UpdatePostInput } from "../type/Post";
-import { Input, Button, Row, Col, Spin } from "antd";
-import Title from "antd/lib/typography/Title";
-import { render } from "@testing-library/react";
 
 type PostDetailProps = {
   id: number;
@@ -27,6 +27,7 @@ export const PostDetail: FunctionComponent<PostDetailProps> = ({ id }) => {
   if (error) return <Spin />;
   const renderData = data.post;
   const { TextArea } = Input;
+  const { Title } = Typography;
   return (
     <>
       <Row gutter={[16, 16]} key={renderData.id}>

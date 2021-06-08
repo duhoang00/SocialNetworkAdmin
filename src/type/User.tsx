@@ -1,4 +1,4 @@
-export interface IUser {
+export interface User {
   id: number;
   username: string;
   email: string;
@@ -10,7 +10,7 @@ export interface IUser {
   };
 }
 
-export interface IUserPost {
+export interface UserPost {
   user: {
     posts: [
       data: {
@@ -21,7 +21,7 @@ export interface IUserPost {
   };
 }
 
-export interface IPhotoAlbum {
+export interface PhotoAlbum {
   album: {
     id: number;
     title: string;

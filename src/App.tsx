@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -5,15 +6,8 @@ import {
   Link,
   Redirect,
 } from "react-router-dom";
-import { PostContainer } from "./components/PostContainer";
-import { UserContainer } from "./components/UserContainer";
-import { CreatePostForm } from "./components/CreatePost";
-import { UserPost } from "./components/UserPost";
-import { PhotoAlbum } from "./components/PhotoAlbum";
-import { Home } from "./components/Home";
 import "antd/dist/antd.css";
-import { Layout, Menu, Breadcrumb, Typography, Divider } from "antd";
-import { useState } from "react";
+import { Layout, Menu } from "antd";
 import {
   FileOutlined,
   HomeOutlined,
@@ -21,10 +15,16 @@ import {
   VideoCameraOutlined,
 } from "@ant-design/icons";
 
+import { PostContainer } from "./components/PostContainer";
+import { UserContainer } from "./components/UserContainer";
+import { CreatePostForm } from "./components/CreatePost";
+import { UserPost } from "./components/UserPost";
+import { PhotoAlbum } from "./components/PhotoAlbum";
+import { Home } from "./components/Home";
+
 function App() {
   const { SubMenu } = Menu;
   const { Header, Content, Sider, Footer } = Layout;
-  const { Title, Paragraph, Text } = Typography;
 
   const [siderCollapsed, setSiderCollapsed] = useState(false);
 

@@ -1,7 +1,8 @@
 import { FunctionComponent, useState } from "react";
+import { Row, Col, Typography } from "antd";
+
 import { PostDetail } from "./PostDetail";
 import { AllPosts } from "./AllPosts";
-import { Row, Col, Typography } from "antd";
 
 export const PostContainer: FunctionComponent = () => {
   const [postDetailID, setPostDetailID] = useState(1);

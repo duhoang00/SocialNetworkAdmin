@@ -1,7 +1,8 @@
 import { FunctionComponent, useCallback, useState } from "react";
+import { Input, Row, Col, Typography, Spin } from "antd";
+
 import { useGetUserQuery } from "../request/UserRequest";
 import { GET_USER } from "../fetching/UserQuery";
-import { Input, Row, Col, Typography, Spin } from "antd";
 
 export const UserContainer: FunctionComponent = () => {
   const [queryID, setQueryID] = useState(1);

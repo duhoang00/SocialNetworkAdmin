@@ -1,7 +1,8 @@
 import { FunctionComponent, useState, useCallback } from "react";
+import { Input, Row, Col, Typography, Divider, Spin } from "antd";
+
 import { useGetUserPostQuery } from "../request/UserRequest";
 import { GET_USER_POST } from "../fetching/UserQuery";
-import { Input, Row, Col, Typography, Divider, Spin } from "antd";
 
 export const UserPost: FunctionComponent = () => {
   const [queryUserID, setQueryUserID] = useState(1);

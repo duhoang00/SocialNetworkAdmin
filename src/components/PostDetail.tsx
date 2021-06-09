@@ -3,10 +3,11 @@ import { useMutation } from "@apollo/client";
 import { Input, Button, Row, Col, Spin } from "antd";
 import { Typography } from "antd";
 
-import { GET_POST_DETAIL } from "../fetching/PostQuery";
-import { usePostDetailQuery } from "../request/PostRequest";
-import { DELETE_POST, UPDATE_POST } from "../fetching/PostMutation";
-import { UpdatePostInput } from "../type/Post";
+import { DELETE_POST } from "../fetching/PostMutation";
+// import { UpdatePostInput } from "../type/Post";
+
+import usePostDetailQuery from "../graphql/PostDetailQuery";
+import useUpdatePostMutation from "../graphql/UpdatePostMutation";
 
 type PostDetailProps = {
   id: number;
@@ -15,13 +16,12 @@ type PostDetailProps = {
 export const PostDetail: FunctionComponent<PostDetailProps> = ({ id }) => {
   const [deletePost, deleteStatus] = useMutation(DELETE_POST);
 
-  const [updatePost, updateStatus] = useMutation(UPDATE_POST);
+  // const [updatePost, updateStatus] = useMutation(UPDATE_POST);
 
-  const { loading, error, data } = usePostDetailQuery(GET_POST_DETAIL, id);
-  const [newPostContent, setNewPostContent] = useState<UpdatePostInput>({
-    id: id,
-    input: { body: data?.post.body },
-  });
+  const { loading, error, data } = usePostDetailQuery(id);
+  const [newPostContent, setNewPostContent] = useState("");
+
+  const [updatePost, { loading: isUpdatingPost }] = useUpdatePostMutation();
 
   if (loading) return <Spin />;
   if (error) return <Spin />;
@@ -47,12 +47,7 @@ export const PostDetail: FunctionComponent<PostDetailProps> = ({ id }) => {
             defaultValue={renderData.body}
             rows={5}
             onChange={(e) => {
-              setNewPostContent((newPostContent) => ({
-                id: newPostContent.id,
-                input: {
-                  body: e.target.value,
-                },
-              }));
+              setNewPostContent(e.target.value);
             }}
           />
         </Col>
@@ -62,7 +57,10 @@ export const PostDetail: FunctionComponent<PostDetailProps> = ({ id }) => {
             type="primary"
             onClick={(e) => {
               updatePost({
-                variables: newPostContent,
+                id: id,
+                input: {
+                  body: newPostContent,
+                },
               });
             }}
           >

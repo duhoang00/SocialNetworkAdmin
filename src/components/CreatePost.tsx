@@ -22,10 +22,8 @@ export const CreatePostForm: FunctionComponent = () => {
             className="textarea"
             onChange={(e) => {
               setInput((input) => ({
-                input: {
-                  title: e.target.value,
-                  body: input?.input.body,
-                },
+                title: e.target.value,
+                body: input?.body,
               }));
             }}
           ></TextArea>
@@ -37,10 +35,8 @@ export const CreatePostForm: FunctionComponent = () => {
             className="textarea"
             onChange={(e) => {
               setInput((newPost) => ({
-                input: {
-                  title: input?.input.title,
-                  body: e.target.value,
-                },
+                title: input?.title,
+                body: e.target.value,
               }));
             }}
           ></TextArea>

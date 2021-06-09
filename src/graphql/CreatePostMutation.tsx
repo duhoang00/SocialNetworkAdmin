@@ -1,10 +1,5 @@
 import { gql, useMutation } from "@apollo/client";
 
-// interface CreatePostInput {
-//   title: string;
-//   body: string;
-// }
-
 const CREATE_POST = gql`
   mutation ($input: CreatePostInput!) {
     createPost(input: $input) {

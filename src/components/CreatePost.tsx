@@ -1,5 +1,4 @@
 import { FunctionComponent, useState } from "react";
-import { useMutation } from "@apollo/client";
 import { Input, Button, Row, Col, Typography } from "antd";
 
 import useCreatePostMutation from "../graphql/CreatePostMutation";

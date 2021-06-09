@@ -1,11 +1,4 @@
-import { DocumentNode, gql, useQuery } from "@apollo/client";
-
-// interface PageQueryOptions {
-//   paginate: {
-//     page: number;
-//     limit: number;
-//   };
-// }
+import { gql, useQuery } from "@apollo/client";
 
 const GET_ALL_POSTS = gql`
   query ($options: PageQueryOptions) {

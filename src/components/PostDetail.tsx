@@ -4,7 +4,6 @@ import { Input, Button, Row, Col, Spin } from "antd";
 import { Typography } from "antd";
 
 import { DELETE_POST } from "../fetching/PostMutation";
-// import { UpdatePostInput } from "../type/Post";
 
 import usePostDetailQuery from "../graphql/PostDetailQuery";
 import useUpdatePostMutation from "../graphql/UpdatePostMutation";
@@ -16,12 +15,10 @@ type PostDetailProps = {
 export const PostDetail: FunctionComponent<PostDetailProps> = ({ id }) => {
   const [deletePost, deleteStatus] = useMutation(DELETE_POST);
 
-  // const [updatePost, updateStatus] = useMutation(UPDATE_POST);
-
   const { loading, error, data } = usePostDetailQuery(id);
   const [newPostContent, setNewPostContent] = useState("");
 
-  const [updatePost, { loading: isUpdatingPost }] = useUpdatePostMutation();
+  const [updatePost] = useUpdatePostMutation();
 
   if (loading) return <Spin />;
   if (error) return <Spin />;

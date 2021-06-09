@@ -1,12 +1,5 @@
 import { gql, useMutation } from "@apollo/client";
 
-// interface UpdatePostInput {
-//   id: number;
-//   input: {
-//     body: string;
-//   };
-// }
-
 const UPDATE_POST = gql`
   mutation ($id: ID!, $input: UpdatePostInput!) {
     updatePost(id: $id, input: $input) {
@@ -21,11 +14,14 @@ const useUpdatePostMutation = () => {
 
   const mutation = async ({ id, input }) => {
     await updatePost({
-      variables: { id, input },
+      variables: {
+        id,
+        input,
+      },
     });
   };
 
-  return [mutation, { loading }];
+  return [mutation];
 };
 
 export default useUpdatePostMutation;

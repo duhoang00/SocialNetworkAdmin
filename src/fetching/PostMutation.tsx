@@ -10,11 +10,11 @@ export const CREATE_POST = gql`
   }
 `;
 
-export const DELETE_POST = gql`
-  mutation ($id: ID!) {
-    deletePost(id: $id)
-  }
-`;
+// export const DELETE_POST = gql`
+//   mutation ($id: ID!) {
+//     deletePost(id: $id)
+//   }
+// `;
 
 // export const UPDATE_POST = gql`
 //   mutation ($id: ID!, $input: UpdatePostInput!) {

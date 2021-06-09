@@ -3,22 +3,22 @@ import { useMutation } from "@apollo/client";
 import { Input, Button, Row, Col, Spin } from "antd";
 import { Typography } from "antd";
 
-import { DELETE_POST } from "../fetching/PostMutation";
+// import { DELETE_POST } from "../fetching/PostMutation";
 
 import usePostDetailQuery from "../graphql/PostDetailQuery";
 import useUpdatePostMutation from "../graphql/UpdatePostMutation";
+import useDeletePostMutation from "../graphql/DeletePostMutation";
 
 type PostDetailProps = {
   id: number;
 };
 
 export const PostDetail: FunctionComponent<PostDetailProps> = ({ id }) => {
-  const [deletePost, deleteStatus] = useMutation(DELETE_POST);
-
   const { loading, error, data } = usePostDetailQuery(id);
   const [newPostContent, setNewPostContent] = useState("");
 
   const [updatePost] = useUpdatePostMutation();
+  const [deletePost] = useDeletePostMutation();
 
   if (loading) return <Spin />;
   if (error) return <Spin />;
@@ -69,7 +69,7 @@ export const PostDetail: FunctionComponent<PostDetailProps> = ({ id }) => {
             type="primary"
             onClick={(e) => {
               deletePost({
-                variables: { id: renderData.id },
+                id: id,
               });
             }}
           >

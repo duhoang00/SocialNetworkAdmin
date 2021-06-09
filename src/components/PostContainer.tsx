@@ -1,8 +1,13 @@
-import { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useState } from "react";
 import { Row, Col, Typography } from "antd";
 
 import { PostDetail } from "./PostDetail";
 import { AllPosts } from "./AllPosts";
+
+const PostDetailMemo = React.memo(
+  PostDetail,
+  (prevProps, nextProps) => prevProps.id === nextProps.id
+);
 
 export const PostContainer: FunctionComponent = () => {
   const [postDetailID, setPostDetailID] = useState(1);
@@ -21,7 +26,7 @@ export const PostContainer: FunctionComponent = () => {
       </Col>
       <Col span={8}>
         <Title className="title">Post detail</Title>
-        <PostDetail id={postDetailID} />
+        <PostDetailMemo id={postDetailID} />
       </Col>
     </Row>
   );

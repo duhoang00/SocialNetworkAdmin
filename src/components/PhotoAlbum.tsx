@@ -1,4 +1,9 @@
-import { FunctionComponent, useCallback, useMemo, useState } from "react";
+import React, {
+  FunctionComponent,
+  useCallback,
+  useMemo,
+  useState,
+} from "react";
 import { Input, Typography, Row, Col, Spin } from "antd";
 
 import useGetPhotoAlbumQuery from "../graphql/PhotoAlbumQuery";

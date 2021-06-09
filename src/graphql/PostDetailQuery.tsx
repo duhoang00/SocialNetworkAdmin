@@ -16,11 +16,11 @@ const GET_POST_DETAIL = gql`
   }
 `;
 
-function usePostDetailQuery(id: number) {
+const usePostDetailQuery = (id: number) => {
   const { loading, error, data } = useQuery<{ post: Post }>(GET_POST_DETAIL, {
     variables: { id },
   });
   return { loading, error, data };
-}
+};
 
 export default usePostDetailQuery;

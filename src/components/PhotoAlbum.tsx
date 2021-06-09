@@ -1,8 +1,7 @@
 import { FunctionComponent, useCallback, useMemo, useState } from "react";
 import { Input, Typography, Row, Col, Spin } from "antd";
 
-import { useGetPhotoAlbumQuery } from "../request/MediaRequest";
-import { GET_PHOTO_ALBUM } from "../fetching/MediaQuery";
+import useGetPhotoAlbumQuery from "../graphql/PhotoAlbumQuery";
 
 export const PhotoAlbum: FunctionComponent = () => {
   const [queryID, setQueryID] = useState(1);
@@ -12,10 +11,7 @@ export const PhotoAlbum: FunctionComponent = () => {
     },
     [queryID]
   );
-  const { loading, error, data } = useGetPhotoAlbumQuery(
-    GET_PHOTO_ALBUM,
-    queryID
-  );
+  const { loading, error, data } = useGetPhotoAlbumQuery(queryID);
   if (loading || error) {
     return <Spin />;
   }

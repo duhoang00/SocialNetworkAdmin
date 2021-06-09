@@ -1,8 +1,7 @@
 import { FunctionComponent, useState, useCallback } from "react";
 import { Input, Row, Col, Typography, Divider, Spin } from "antd";
 
-import { useGetUserPostQuery } from "../request/UserRequest";
-import { GET_USER_POST } from "../fetching/UserQuery";
+import useGetUserPostQuery from "../graphql/UserPostQuery";
 
 export const UserPost: FunctionComponent = () => {
   const [queryUserID, setQueryUserID] = useState(1);
@@ -12,10 +11,7 @@ export const UserPost: FunctionComponent = () => {
     },
     [queryUserID]
   );
-  const { loading, error, data } = useGetUserPostQuery(
-    GET_USER_POST,
-    queryUserID
-  );
+  const { loading, error, data } = useGetUserPostQuery(queryUserID);
   if (loading || error) {
     return <Spin />;
   }

@@ -3,8 +3,6 @@ import { useMutation } from "@apollo/client";
 import { Input, Button, Row, Col, Spin } from "antd";
 import { Typography } from "antd";
 
-// import { DELETE_POST } from "../fetching/PostMutation";
-
 import usePostDetailQuery from "../graphql/PostDetailQuery";
 import useUpdatePostMutation from "../graphql/UpdatePostMutation";
 import useDeletePostMutation from "../graphql/DeletePostMutation";

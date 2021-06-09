@@ -2,12 +2,12 @@ import { FunctionComponent, useState } from "react";
 import { useMutation } from "@apollo/client";
 import { Input, Button, Row, Col, Typography } from "antd";
 
-import { CREATE_POST } from "../fetching/PostMutation";
-import { CreatePostInput } from "../type/Post";
+import useCreatePostMutation from "../graphql/CreatePostMutation";
 
 export const CreatePostForm: FunctionComponent = () => {
-  const [input, setInput] = useState<CreatePostInput>();
-  const [createPost, { data }] = useMutation(CREATE_POST);
+  const [input, setInput] = useState<{ title: string; body: string }>();
+  const [createPost] = useCreatePostMutation();
+
   const { TextArea } = Input;
   const { Title } = Typography;
 
@@ -46,9 +46,7 @@ export const CreatePostForm: FunctionComponent = () => {
           <Button
             type="primary"
             onClick={(e) => {
-              createPost({
-                variables: input,
-              });
+              createPost(input);
             }}
           >
             Create
